@@ -22,51 +22,24 @@ namespace _4
             try
             {
 
-                double a = Convert.ToDouble(textBox1.Text);
-                double b = Convert.ToDouble(textBox2.Text);
+                double x= Convert.ToDouble(textBox1.Text);
+                double y = Convert.ToDouble(textBox2.Text);
 
-                parabola c = new parabola(a, b);
-                label1.Text = (c.Kor()).ToString();
+                Parabola parabola = new Parabola(x, y);
+                if (parabola.IsBelong())
+                {
+                    label1.Text = "Точка принадлежит области";
+                    label1.ForeColor = Color.Green;
+                }else
+                {
+                    label1.Text = "Точка не принадлежит области";
+                    label1.ForeColor = Color.Red;
+                }
             }
+                
             catch (FormatException)
             {
                 MessageBox.Show("Неверный формат!");
-            }
-        }
-    }
-    class parabola
-    {
-        private double x;
-        private double y;
-
-        public double x1
-        {
-            get { return x; }
-            set { x = value; }
-        }
-        public double y1
-        {
-            get { return y; }
-            set { y = value; }
-        }
-        public parabola(double x, double y)
-        {
-            x = x1;
-            y = y1;
-        }
-        ~parabola()
-        {
-            MessageBox.Show("Объект удалён");
-        }
-        public string Kor()
-        {
-            if (y<=2 && y<=-2 && x>-1.5 || x <= 1.5)
-            {
-                return "лежит";
-            }
-            else
-            {
-                return "не лежит";
             }
         }
     }
